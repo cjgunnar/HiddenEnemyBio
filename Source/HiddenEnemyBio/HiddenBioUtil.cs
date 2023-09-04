@@ -10,45 +10,42 @@ namespace HiddenEnemyBio
 {
     internal class HiddenBioUtil
     {
-        public static bool ShouldBioVisible(Pawn pawn)
+        public const float defaultBioResistance = 10;
+        public const float revealSkillsResistance = 10;
+        public const float revealTraitsResisitance = 15;
+        public const float revealBackstoryResistance = 18;
+        public const float revealPassionSkillsResistance = 18;
+
+        public static bool ShouldDefaultBioVisible(Pawn pawn)
         {
             if (pawn == null || pawn?.story == null) return false;
 
-            if (pawn.IsColonist) return true;
+            if (PawnUtility.EverBeenColonistOrTameAnimal(pawn)) return true;
 
-            if (pawn.IsQuestLodger()) return true;
+            // unwaveringly loyal give all information because... what else to do?
+            if (pawn.IsPrisoner && !pawn.guest.Recruitable) return true;
 
-            if (pawn.kindDef == PawnKindDef.Named("Slave")) return true;
+            // prisoners with low resistance use default bio
+            if (pawn.IsPrisoner && pawn.guest.resistance <= 5) return true;
 
-            if (pawn.IsPrisonerOfColony && pawn.guest.resistance < 5f) return true;
-
-            return false;
+            // enemies have hidden information
+            if (pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
+            return true;
         }
 
         public static bool ShouldRevealBackstory(Pawn pawn)
         {
-            if(!ShouldBioVisible(pawn)) return false;
-
-            if (pawn.IsPrisonerOfColony)
-            {
-                if (pawn.guest.resistance < 18) return true;
-                else return false;
-            }
-
-            return false;
+            if (pawn.IsPrisoner && pawn.guest.resistance > revealBackstoryResistance) return false;
+            else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
+            return true;
         }
 
-        public static bool ShouldRevealTraits(Pawn pawn)
+        public static bool ShouldRevealTrait(Pawn pawn, Trait trait)
         {
-            if (!ShouldBioVisible(pawn)) return false;
-
-            if (pawn.IsPrisonerOfColony)
-            {
-                if (pawn.guest.resistance < 15) return true;
-                else return false;
-            }
-
-            return false;
+            if(trait.Suppressed || trait.sourceGene != null) return true;
+            else if (pawn.IsPrisoner && pawn.guest.resistance > revealTraitsResisitance) return false;
+            else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
+            return true;
         }
 
         public static bool ShouldRevealIncapable(Pawn pawn)
@@ -56,19 +53,18 @@ namespace HiddenEnemyBio
             return ShouldRevealBackstory(pawn);
         }
 
-        public static bool ShouldRevealSkills(Pawn pawn)
+        public static bool ShouldRevealPassionSkills(Pawn pawn)
         {
-            if (!ShouldBioVisible(pawn)) return false;
-
-            if (pawn.IsPrisonerOfColony)
-            {
-                if (pawn.guest.resistance < 10) return true;
-                else return false;
-            }
-
-            return false;
+            if (pawn.IsPrisoner && pawn.guest.resistance > revealPassionSkillsResistance) return false;
+            else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
+            return true;
         }
 
-
+        public static bool ShouldRevealSkills(Pawn pawn)
+        {
+            if (pawn.IsPrisoner && pawn.guest.resistance > revealSkillsResistance) return false;
+            else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
+            return true;
+        }
     }
 }

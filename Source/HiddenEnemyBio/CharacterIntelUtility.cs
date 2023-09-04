@@ -309,15 +309,18 @@ namespace HiddenEnemyBio
             Rect leftRect = new Rect(0f, num2, 250f, rect2.height - num2);
             DoLeftSection(rect, leftRect, pawn);
             Rect rect13 = new Rect(leftRect.xMax, num2, 258f, rect2.height - num2);
-            Widgets.BeginGroup(rect13);
+            
             // CHANGE
-            if(HiddenBioUtil.ShouldRevealSkills(pawn))
+            if(HiddenBioUtil.ShouldRevealSkills(pawn) || HiddenBioUtil.ShouldRevealPassionSkills(pawn)) { 
+                Widgets.BeginGroup(rect13);
                 SkillUI.DrawSkillsOf(mode: (Current.ProgramState != ProgramState.Playing) ? SkillUI.SkillDrawMode.Menu : SkillUI.SkillDrawMode.Gameplay, p: pawn, offset: Vector2.zero, container: rect13);
+                Widgets.EndGroup();
+            }
             else
             {
-                Widgets.Label(rect13, "This character hasn't revealed their skills.");
+                Widgets.Label(rect13, "This character hasn't revealed their skills or passions.");
             }
-            Widgets.EndGroup();
+            
             Widgets.EndGroup();
         }
 
@@ -1166,7 +1169,7 @@ namespace HiddenEnemyBio
                                 GUI.color = ColoredText.GeneColor;
                             }
                             // CHANGE
-                            if (HiddenBioUtil.ShouldRevealTraits(pawn) || trait.Suppressed || trait.sourceGene != null)
+                            if (HiddenBioUtil.ShouldRevealTrait(pawn, trait))
                             {
                                 Widgets.Label(new Rect(r.x + 5f, r.y, r.width - 10f, r.height), trait.LabelCap);
                                 GUI.color = Color.white;
@@ -1187,7 +1190,7 @@ namespace HiddenEnemyBio
                                 }
                             }
                             
-                        }, (Trait trait) => HiddenBioUtil.ShouldRevealTraits(pawn) ? Text.CalcSize(trait.LabelCap).x + 10f : Text.CalcSize("(Hidden)").x + 10f, 4f, 5f, allowOrderOptimization: false); // CHANGED
+                        }, (Trait trait) => HiddenBioUtil.ShouldRevealTrait(pawn, trait) ? Text.CalcSize(trait.LabelCap).x + 10f : Text.CalcSize("(Hidden)").x + 10f, 4f, 5f, allowOrderOptimization: false); // CHANGED
                     }
                 }
             });

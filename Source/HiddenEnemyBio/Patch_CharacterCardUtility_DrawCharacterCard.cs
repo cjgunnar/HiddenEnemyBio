@@ -17,7 +17,7 @@ namespace HiddenEnemyBio
     {
         static bool Prefix(Rect rect, Pawn pawn, Action randomizeCallback, Rect creationRect, bool showName)
         {
-            if(HiddenBioUtil.ShouldBioVisible(pawn))
+            if(HiddenBioUtil.ShouldDefaultBioVisible(pawn))
             {
                 return true;
             }

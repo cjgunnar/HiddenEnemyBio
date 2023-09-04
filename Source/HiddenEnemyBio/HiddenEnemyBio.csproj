@@ -45,6 +45,7 @@
     <Compile Include="CharacterIntelUtility.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Patch_CharacterCardUtility_DrawCharacterCard.cs" />
+    <Compile Include="Patch_SkillUI_DrawSkillsOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
