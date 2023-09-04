@@ -5,14 +5,12 @@ using HarmonyLib;
 namespace HiddenEnemyBio
 {
     [StaticConstructorOnStartup]
-    public class Core
+    public class Mod
     {
-        public static HiddenEnemyBio hiddenEnemyBio;
-        static Core()
+        static Mod()
         {
             Log.Message("Hello World, it's cjgunnar");
-            var harmony = new Harmony("cjgunnar.HiddenEnemyBio");
-            harmony.PatchAll();
+            new Harmony("cjgunnar.HiddenEnemyBio").PatchAll();
         }
     }
 }
