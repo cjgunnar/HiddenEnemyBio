@@ -318,7 +318,7 @@ namespace HiddenEnemyBio
             }
             else
             {
-                Widgets.Label(rect13, "This character hasn't revealed their skills or passions.");
+                Widgets.Label(rect13, "HEB.UnknownSkillsPassions".Translate().Colorize(ColoredText.SubtleGrayColor));
             }
             
             Widgets.EndGroup();
@@ -1074,7 +1074,7 @@ namespace HiddenEnemyBio
                                 Text.Anchor = TextAnchor.MiddleLeft;
                                 Widgets.Label(rect7, (value6 == BackstorySlot.Adulthood) ? "Adulthood".Translate() : "Childhood".Translate());
                                 Text.Anchor = TextAnchor.UpperLeft;
-                                string text = "Unknown";
+                                string text = "HEB.UnknownBackstory".Translate().Colorize(ColoredText.SubtleGrayColor);
                                 Rect rect8 = new Rect(rect7);
                                 rect8.x += 90f;
                                 rect8.width = Text.CalcSize(text).x + 10f;
@@ -1091,7 +1091,7 @@ namespace HiddenEnemyBio
                                 }
                                 if (Mouse.IsOver(rect8))
                                 {
-                                    TooltipHandler.TipRegion(rect8, "This character has not revealed their backstory.");
+                                    TooltipHandler.TipRegion(rect8, "HEB.UnknownBackstoryTip".Formatted(pawn));
                                 }
                                 num8 += rect7.height + 4f;
                             }
@@ -1106,7 +1106,7 @@ namespace HiddenEnemyBio
                         Rect rect10 = new Rect(rect9);
                         rect10.x += 90f;
                         rect10.width -= 90f;
-                        Widgets.Label(rect10, "Unknown"); // CHANGED
+                        Widgets.Label(rect10, "HEB.UnknownBackstory".Translate()); // CHANGED
                         num8 += rect9.height;
                     }
                 }
@@ -1181,16 +1181,16 @@ namespace HiddenEnemyBio
                             }
                             else
                             {
-                                Widgets.Label(new Rect(r.x + 5f, r.y, r.width - 10f, r.height), "(Hidden)");
+                                Widgets.Label(new Rect(r.x + 5f, r.y, r.width - 10f, r.height), "HEB.UnknownTrait".Translate());
                                 GUI.color = Color.white;
                                 if (Mouse.IsOver(r))
                                 {
                                     Trait trLocal = trait;
-                                    TooltipHandler.TipRegion(tip: new TipSignal(() => "This character has not revealed its trait.", (int)currentY3 * 37), rect: r);
+                                    TooltipHandler.TipRegion(tip: new TipSignal(() => "HEB.UnknownTraitTip".Formatted(pawn), (int)currentY3 * 37), rect: r);
                                 }
                             }
                             
-                        }, (Trait trait) => HiddenBioUtil.ShouldRevealTrait(pawn, trait) ? Text.CalcSize(trait.LabelCap).x + 10f : Text.CalcSize("(Hidden)").x + 10f, 4f, 5f, allowOrderOptimization: false); // CHANGED
+                        }, (Trait trait) => HiddenBioUtil.ShouldRevealTrait(pawn, trait) ? Text.CalcSize(trait.LabelCap).x + 10f : Text.CalcSize("HEB.UnknownTrait".Translate()).x + 10f, 4f, 5f, allowOrderOptimization: false); // CHANGED
                     }
                 }
             });
@@ -1237,9 +1237,9 @@ namespace HiddenEnemyBio
                         {
                             Widgets.DrawHighlight(rect5);
                         }
-                        Widgets.Label(rect5, "(Hidden)");
+                        Widgets.Label(rect5, "HEB.UnknownIncapabilities".Translate());
                         // TooltipHandler.TipRegionByKey(rect5, "None");
-                        TooltipHandler.TipRegion(rect5, "The character has not revealed what work types they will do.");
+                        TooltipHandler.TipRegion(rect5, "HEB.UnknownIncapabilitiesTip".Formatted(pawn));
                     }
                     else if (disabledTags == WorkTags.None)
                     {

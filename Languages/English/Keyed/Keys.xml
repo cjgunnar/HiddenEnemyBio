@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
  
- <HBT.HiddenEnemyBio>HiddenEnemyBio</HBT.HiddenEnemyBio>
-
+ <HEB.HiddenEnemyBio>HiddenEnemyBio</HEB.HiddenEnemyBio>
+  <HEB.UnknownSkillsPassions>Unknown skills and passions.</HEB.UnknownSkillsPassions>
+  <HEB.UnknownBackstory>Unknown</HEB.UnknownBackstory>
+  <HEB.UnknownBackstoryTip>{PAWN_name} has not revealed {PAWN_possessive} backstory.</HEB.UnknownBackstoryTip>
+  <HEB.UnknownTraitTip>{PAWN_name} has not revealed {PAWN_possessive} trait.</HEB.UnknownTraitTip>
+  <HEB.UnknownTrait>Unknown</HEB.UnknownTrait>
+  <HEB.UnknownIncapabilities>Unknown</HEB.UnknownIncapabilities>
+  <HEB.UnknownIncapabilitiesTip>{PAWN_name} has not revealed what work types {PAWN_possessive} will do.</HEB.UnknownIncapabilitiesTip>
 </LanguageData>

@@ -9,7 +9,6 @@ namespace HiddenEnemyBio
     {
         static Mod()
         {
-            Log.Message("Hello World, it's cjgunnar");
             new Harmony("cjgunnar.HiddenEnemyBio").PatchAll();
         }
     }
