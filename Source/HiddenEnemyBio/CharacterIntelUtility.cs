@@ -1091,7 +1091,7 @@ namespace HiddenEnemyBio
                                 }
                                 if (Mouse.IsOver(rect8))
                                 {
-                                    TooltipHandler.TipRegion(rect8, "HEB.UnknownBackstoryTip".Formatted(pawn));
+                                    TooltipHandler.TipRegion(rect8, "HEB.UnknownBackstoryTip".Translate(pawn.Named("PAWN")));
                                 }
                                 num8 += rect7.height + 4f;
                             }
@@ -1186,7 +1186,7 @@ namespace HiddenEnemyBio
                                 if (Mouse.IsOver(r))
                                 {
                                     Trait trLocal = trait;
-                                    TooltipHandler.TipRegion(tip: new TipSignal(() => "HEB.UnknownTraitTip".Formatted(pawn), (int)currentY3 * 37), rect: r);
+                                    TooltipHandler.TipRegion(tip: new TipSignal(() => "HEB.UnknownTraitTip".Translate(pawn.Named("PAWN")), (int)currentY3 * 37), rect: r);
                                 }
                             }
                             
@@ -1239,7 +1239,7 @@ namespace HiddenEnemyBio
                         }
                         Widgets.Label(rect5, "HEB.UnknownIncapabilities".Translate());
                         // TooltipHandler.TipRegionByKey(rect5, "None");
-                        TooltipHandler.TipRegion(rect5, "HEB.UnknownIncapabilitiesTip".Formatted(pawn));
+                        TooltipHandler.TipRegion(rect5, "HEB.UnknownIncapabilitiesTip".Translate(pawn.Named("PAWN")));
                     }
                     else if (disabledTags == WorkTags.None)
                     {

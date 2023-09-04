@@ -62,7 +62,7 @@ namespace HiddenEnemyBio
             }
             if(!hadPassion)
             {
-                Widgets.Label(new Rect(offset.x, offset.y, 230f, container.height), "This character has no passions.");
+                Widgets.Label(new Rect(offset.x, offset.y, 230f, container.height), "HEB.NoPassions".Translate(p.Named("PAWN")));
             }
         }
     }
