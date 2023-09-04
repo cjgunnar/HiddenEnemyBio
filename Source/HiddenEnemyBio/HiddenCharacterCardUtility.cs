@@ -12,7 +12,7 @@ using Verse;
 namespace HiddenEnemyBio
 {
     [StaticConstructorOnStartup]
-    public static class CharacterIntelUtility
+    public static class HiddenCharacterCardUtility
     {
         private struct LeftRectSection
         {

@@ -23,7 +23,7 @@ namespace HiddenEnemyBio
             }
             else
             {
-                CharacterIntelUtility.DrawCharacterCard(rect, pawn, randomizeCallback, creationRect, showName);
+                HiddenCharacterCardUtility.DrawCharacterCard(rect, pawn, randomizeCallback, creationRect, showName);
                 return false;
             }
         }

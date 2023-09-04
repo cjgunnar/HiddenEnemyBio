@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HiddenBioUtil.cs" />
-    <Compile Include="CharacterIntelUtility.cs" />
+    <Compile Include="HiddenCharacterCardUtility.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Patch_CharacterCardUtility_DrawCharacterCard.cs" />
     <Compile Include="Patch_SkillUI_DrawSkillsOf.cs" />
