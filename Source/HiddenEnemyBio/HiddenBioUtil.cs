@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace HiddenEnemyBio
             if (pawn == null || pawn?.story == null) return false;
 
             if (pawn.IsColonist) return true;
+
+            if (pawn.IsQuestLodger()) return true;
+
+            if (pawn.kindDef == PawnKindDef.Named("Slave")) return true;
 
             if (pawn.IsPrisonerOfColony && pawn.guest.resistance < 5f) return true;
 
@@ -49,6 +54,19 @@ namespace HiddenEnemyBio
         public static bool ShouldRevealIncapable(Pawn pawn)
         {
             return ShouldRevealBackstory(pawn);
+        }
+
+        public static bool ShouldRevealSkills(Pawn pawn)
+        {
+            if (!ShouldBioVisible(pawn)) return false;
+
+            if (pawn.IsPrisonerOfColony)
+            {
+                if (pawn.guest.resistance < 10) return true;
+                else return false;
+            }
+
+            return false;
         }
 
 

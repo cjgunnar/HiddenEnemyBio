@@ -310,7 +310,13 @@ namespace HiddenEnemyBio
             DoLeftSection(rect, leftRect, pawn);
             Rect rect13 = new Rect(leftRect.xMax, num2, 258f, rect2.height - num2);
             Widgets.BeginGroup(rect13);
-            SkillUI.DrawSkillsOf(mode: (Current.ProgramState != ProgramState.Playing) ? SkillUI.SkillDrawMode.Menu : SkillUI.SkillDrawMode.Gameplay, p: pawn, offset: Vector2.zero, container: rect13);
+            // CHANGE
+            if(HiddenBioUtil.ShouldRevealSkills(pawn))
+                SkillUI.DrawSkillsOf(mode: (Current.ProgramState != ProgramState.Playing) ? SkillUI.SkillDrawMode.Menu : SkillUI.SkillDrawMode.Gameplay, p: pawn, offset: Vector2.zero, container: rect13);
+            else
+            {
+                Widgets.Label(rect13, "This character hasn't revealed their skills.");
+            }
             Widgets.EndGroup();
             Widgets.EndGroup();
         }
