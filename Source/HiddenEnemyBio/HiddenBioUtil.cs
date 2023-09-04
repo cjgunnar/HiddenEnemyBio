@@ -19,5 +19,33 @@ namespace HiddenEnemyBio
 
             return false;
         }
+
+        public static bool ShouldRevealBackstory(Pawn pawn)
+        {
+            if(!ShouldBioVisible(pawn)) return false;
+
+            if (pawn.IsPrisonerOfColony)
+            {
+                if (pawn.guest.resistance < 18) return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public static bool ShouldRevealTraits(Pawn pawn)
+        {
+            if (!ShouldBioVisible(pawn)) return false;
+
+            if (pawn.IsPrisonerOfColony)
+            {
+                if (pawn.guest.resistance < 15) return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+
     }
 }

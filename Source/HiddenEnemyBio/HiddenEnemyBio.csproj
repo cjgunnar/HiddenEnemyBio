@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HiddenBioUtil.cs" />
+    <Compile Include="CharacterIntelUtility.cs" />
     <Compile Include="Mod.cs" />
-    <Compile Include="Patch_CharacterCardUtility_DoLeftSection.cs" />
+    <Compile Include="Patch_CharacterCardUtility_DrawCharacterCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
