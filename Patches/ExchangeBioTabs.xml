@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+<Operation Class="PatchOperationReplace"> <!-- add my character tab -->
+  <xpath>/Defs/ThingDef[@Name="BasePawn"]/inspectorTabs/li[text()="ITab_Pawn_Character"]</xpath>
+  <value>
+    <li>HiddenEnemyBio.ITab_Pawn_Character_Revealable</li>
+  </value>
+</Operation>
+</Patch>

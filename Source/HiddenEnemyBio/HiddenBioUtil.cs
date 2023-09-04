@@ -46,6 +46,11 @@ namespace HiddenEnemyBio
             return false;
         }
 
+        public static bool ShouldRevealIncapable(Pawn pawn)
+        {
+            return ShouldRevealBackstory(pawn);
+        }
+
 
     }
 }

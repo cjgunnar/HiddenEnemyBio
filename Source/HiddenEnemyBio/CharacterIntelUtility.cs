@@ -1030,7 +1030,7 @@ namespace HiddenEnemyBio
                         BackstoryDef backstory = pawn.story.GetBackstory(value6);
                         if (backstory != null)
                         {
-                            // CHANGE 1: Hide Backstory
+                            // CHANGE: Hide Backstory
                             if (HiddenBioUtil.ShouldRevealBackstory(pawn))
                             {
                                 Rect rect7 = new Rect(sectionRect.x, num8, leftRect.width, 22f);
@@ -1060,7 +1060,7 @@ namespace HiddenEnemyBio
                             }
                             else
                             {
-                                // CHANGE: filler
+                                // CHANGE: here's where the filler backstories are placed
                                 Rect rect7 = new Rect(sectionRect.x, num8, leftRect.width, 22f);
                                 Text.Anchor = TextAnchor.MiddleLeft;
                                 Widgets.Label(rect7, (value6 == BackstorySlot.Adulthood) ? "Adulthood".Translate() : "Childhood".Translate());
@@ -1160,7 +1160,7 @@ namespace HiddenEnemyBio
                                 GUI.color = ColoredText.GeneColor;
                             }
                             // CHANGE
-                            if (HiddenBioUtil.ShouldRevealTraits(pawn) || trait.Suppressed)
+                            if (HiddenBioUtil.ShouldRevealTraits(pawn) || trait.Suppressed || trait.sourceGene != null)
                             {
                                 Widgets.Label(new Rect(r.x + 5f, r.y, r.width - 10f, r.height), trait.LabelCap);
                                 GUI.color = Color.white;
@@ -1220,7 +1220,19 @@ namespace HiddenEnemyBio
                     float currentY2 = sectionRect.y;
                     Widgets.Label(new Rect(sectionRect.x, currentY2, 200f, 24f), "IncapableOf".Translate(pawn).AsTipTitle());
                     currentY2 += 24f;
-                    if (disabledTags == WorkTags.None)
+                    if (!HiddenBioUtil.ShouldRevealIncapable(pawn)) // CHANGE
+                    {
+                        GUI.color = Color.gray;
+                        Rect rect5 = new Rect(sectionRect.x, currentY2, leftRect.width, 24f);
+                        if (Mouse.IsOver(rect5))
+                        {
+                            Widgets.DrawHighlight(rect5);
+                        }
+                        Widgets.Label(rect5, "(Hidden)");
+                        // TooltipHandler.TipRegionByKey(rect5, "None");
+                        TooltipHandler.TipRegion(rect5, "The character has not revealed what work types they will do.");
+                    }
+                    else if (disabledTags == WorkTags.None)
                     {
                         GUI.color = Color.gray;
                         Rect rect5 = new Rect(sectionRect.x, currentY2, leftRect.width, 24f);
