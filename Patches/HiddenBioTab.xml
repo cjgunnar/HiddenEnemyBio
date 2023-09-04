@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+<Operation Class="PatchOperationAdd"> <!-- add my character tab -->
+  <xpath>/Defs/ThingDef[@Name="BasePawn"]/inspectorTabs</xpath>
+  <value>
+    <li>HiddenEnemyBio.HiddenEnemyBio</li>
+  </value>
+</Operation>
+</Patch>

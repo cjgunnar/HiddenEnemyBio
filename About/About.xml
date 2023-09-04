@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>cjgunnar.HiddenEnemyBio</packageId>
+  <name>Hidden Enemy Bio</name>
+  <author>cjgunnar</author>
+  <supportedVersions>
+    <li>1.4</li>
+  </supportedVersions>
+  <description>Hides the Bio of enemies until their resistance is low enough.</description>
+  <loadAfter>
+    <li>ludeon.rimworld</li>
+    <li>ludeon.rimworld.royalty</li>
+    <li>ludeon.rimworld.ideology</li>
+  </loadAfter>
+</ModMetaData>
