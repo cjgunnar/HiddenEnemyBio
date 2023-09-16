@@ -20,8 +20,8 @@ namespace HiddenEnemyBio
             listingStandard.Begin(inRect);
             // listingStandard.CheckboxLabeled("exampleBoolExplanation", ref settings.exampleBool, "exampleBoolToolTip");
 
-            listingStandard.Label("HEB.SettingsDefaultBio".Translate() + ": " + Math.Round(Settings.defaultBioResistance, 2));
-            Settings.defaultBioResistance = listingStandard.Slider(Settings.defaultBioResistance, 0f, 40f);
+            listingStandard.Label("HEB.SettingsVanillaBio".Translate() + ": " + Math.Round(Settings.useVanillaBioResistance, 2));
+            Settings.useVanillaBioResistance = listingStandard.Slider(Settings.useVanillaBioResistance, 0f, 40f);
             
             listingStandard.Label("HEB.SettingsShowSkills".Translate() + ": " + Math.Round(Settings.revealSkillsResistance, 2));
             Settings.revealSkillsResistance = listingStandard.Slider(Settings.revealSkillsResistance, 0f, 40f);

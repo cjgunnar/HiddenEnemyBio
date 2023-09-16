@@ -16,11 +16,13 @@ namespace HiddenEnemyBio
 
             if (PawnUtility.EverBeenColonistOrTameAnimal(pawn)) return true;
 
-            // unwaveringly loyal give all information because... what else to do?
-            if (pawn.IsPrisoner && !pawn.guest.Recruitable) return true;
+            if (pawn.guest.IsSlave) return true;
+
+            // unwaveringly loyal never gives information
+            if (pawn.IsPrisoner && !pawn.guest.Recruitable) return false;
 
             // prisoners
-            if (pawn.IsPrisoner && pawn.guest.resistance <= Settings.defaultBioResistance) return true;
+            if (pawn.IsPrisoner && pawn.guest.resistance <= Settings.useVanillaBioResistance) return true;
 
             // high resistance prisoners
             if (pawn.IsPrisoner) return false;
@@ -32,6 +34,7 @@ namespace HiddenEnemyBio
 
         public static bool ShouldRevealBackstory(Pawn pawn)
         {
+            if (pawn.IsPrisoner && !pawn.guest.Recruitable) return false;
             if (pawn.IsPrisoner && pawn.guest.resistance > Settings.revealBackstoryResistance) return false;
             else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
             return true;
@@ -40,6 +43,7 @@ namespace HiddenEnemyBio
         public static bool ShouldRevealTrait(Pawn pawn, Trait trait)
         {
             if(trait.Suppressed || trait.sourceGene != null) return true;
+            if (pawn.IsPrisoner && !pawn.guest.Recruitable) return false;
             else if (pawn.IsPrisoner && pawn.guest.resistance > Settings.revealTraitsResisitance) return false;
             else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
             return true;
@@ -52,6 +56,7 @@ namespace HiddenEnemyBio
 
         public static bool ShouldRevealPassionSkills(Pawn pawn)
         {
+            if (pawn.IsPrisoner && !pawn.guest.Recruitable) return false;
             if (pawn.IsPrisoner && pawn.guest.resistance > Settings.revealPassionSkillsResistance) return false;
             else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
             return true;
@@ -59,6 +64,7 @@ namespace HiddenEnemyBio
 
         public static bool ShouldRevealSkills(Pawn pawn)
         {
+            if (pawn.IsPrisoner && !pawn.guest.Recruitable) return false;
             if (pawn.IsPrisoner && pawn.guest.resistance > Settings.revealSkillsResistance) return false;
             else if (!pawn.IsPrisoner && pawn.Faction != null && !pawn.Faction.IsPlayer && pawn.Faction.PlayerRelationKind == FactionRelationKind.Hostile) return false;
             return true;
