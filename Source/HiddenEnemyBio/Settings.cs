@@ -9,7 +9,7 @@ namespace HiddenEnemyBio
 {
     internal class Settings : ModSettings
     {
-        public static float defaultBioResistance = 10;
+        public static float useVanillaBioResistance = 10;
         public static float revealSkillsResistance = 10;
         public static float revealTraitsResisitance = 15;
         public static float revealBackstoryResistance = 18;
@@ -17,7 +17,7 @@ namespace HiddenEnemyBio
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref defaultBioResistance, "defaultBioResistance", 10);
+            Scribe_Values.Look(ref useVanillaBioResistance, "useVanillaBioResistance", 10);
             Scribe_Values.Look(ref revealSkillsResistance, "revealSkillsResistance", 10);
             Scribe_Values.Look(ref revealTraitsResisitance, "revealTraitsResistance", 15);
             Scribe_Values.Look(ref revealBackstoryResistance, "revealBackstoryResistance", 18);
