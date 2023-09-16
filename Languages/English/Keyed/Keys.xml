@@ -12,7 +12,7 @@
   <HEB.UnknownIncapabilitiesTip>{PAWN_labelShort} has not revealed what work types {PAWN_pronoun} will do.</HEB.UnknownIncapabilitiesTip>
   <HEB.NoPassions>{PAWN_labelShort} has no passions.</HEB.NoPassions>
   
-  <HEB.SettingsDefaultBio>Resistance below this will use unmodified bio. This helps compatability with other mods that change the bio tab. Note that this will reveal everything. Value</HEB.SettingsDefaultBio>
+  <HEB.SettingsVanillaBio>Resistance below this will use vanilla bio, allowing any other information that other mods add to the bio to be revealed. Note that this will reveal everything. Value</HEB.SettingsVanillaBio>
   <HEB.SettingsShowSkills>Resistance below this will show skills</HEB.SettingsShowSkills>
   <HEB.SettingsShowTraits>Resistance below this will show traits</HEB.SettingsShowTraits>
   <HEB.SettingsShowPassions>Resistance below this will show skills with passions</HEB.SettingsShowPassions>
