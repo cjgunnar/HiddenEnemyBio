@@ -43,10 +43,11 @@
   <ItemGroup>
     <Compile Include="HiddenBioUtil.cs" />
     <Compile Include="HiddenCharacterCardUtility.cs" />
-    <Compile Include="Mod.cs" />
+    <Compile Include="HiddenEnemyBioMod.cs" />
     <Compile Include="Patch_CharacterCardUtility_DrawCharacterCard.cs" />
     <Compile Include="Patch_SkillUI_DrawSkillsOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
