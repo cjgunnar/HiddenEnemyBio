@@ -10,7 +10,7 @@ namespace HiddenEnemyBio
     internal class Patch_SkillUI_DrawSkill
     {
         [HarmonyPrefix]
-        public static bool Prefix(SkillRecord skill, Rect holdingRect, SkillDrawMode mode, string tooltipPrefix = "")
+        public static bool Prefix(SkillRecord skill, Rect holdingRect, SkillDrawMode mode, float ___levelLabelWidth, string tooltipPrefix = "")
         {
             Pawn p = skill.Pawn;
             if (p == null) return true;
@@ -19,7 +19,7 @@ namespace HiddenEnemyBio
             else if (HiddenBioUtil.ShouldRevealPassionSkills(p) && mode != SkillDrawMode.Menu)
             {
                 if (skill.passion > 0) return true;
-                DrawSkillEmpty(skill, holdingRect, 60f);
+                DrawSkillEmpty(skill, holdingRect, ___levelLabelWidth);
                 return false;
             }
 
