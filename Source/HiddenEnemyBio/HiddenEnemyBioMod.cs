@@ -3,6 +3,7 @@ using Verse;
 using HarmonyLib;
 using UnityEngine;
 using System;
+using System.Reflection;
 
 namespace HiddenEnemyBio
 {
@@ -11,7 +12,12 @@ namespace HiddenEnemyBio
     {
         public HiddenEnemyBioMod(ModContentPack content) : base(content)
         {
-            new Harmony("cjgunnar.HiddenEnemyBio").PatchAll();
+            Harmony harmony = new Harmony("cjgunnar.HiddenEnemyBio");
+            harmony.PatchAll();
+
+            var assemblyClass = AccessTools.TypeByName("CharacterCardUtility").GetNestedType("<>c__DisplayClass42_0", BindingFlags.NonPublic);
+            var assemblyMethod = assemblyClass.GetMethod("<DoLeftSection>b__3", BindingFlags.NonPublic | BindingFlags.Instance);
+            harmony.Patch(assemblyMethod, transpiler: new HarmonyMethod(typeof(Patch_GetBackstory).GetMethod("DrawCharacterCardMethod_Patch")));
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

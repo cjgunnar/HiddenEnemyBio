@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HiddenBioUtil.cs" />
-    <Compile Include="HiddenCharacterCardUtility.cs" />
     <Compile Include="HiddenEnemyBioMod.cs" />
-    <Compile Include="Patch_CharacterCardUtility_DrawCharacterCard.cs" />
+    <Compile Include="Patch_GetBackstory.cs" />
+    <Compile Include="Patch_SkillUI_DrawSkill.cs" />
     <Compile Include="Patch_SkillUI_DrawSkillsOf.cs" />
+    <Compile Include="Patch_Thought.cs" />
+    <Compile Include="Patch_Trait.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>

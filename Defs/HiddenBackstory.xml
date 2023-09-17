@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<BackstoryDef>
+		<shuffleable>false</shuffleable>
+		<defName>HEB.UnknownBackstory</defName>
+		<title>unknown</title>
+		<titleShort>unknown</titleShort>
+		<baseDesc>[PAWN_nameDef] has not revealed [PAWN_possessive] backstory.</baseDesc>
+	</BackstoryDef>
+</Defs>
